@@ -16,6 +16,12 @@ namespace DreamHomeApp.Entites
         public string Image { get; set; }
         public DateTime RegistratedOn { get; set; }
         public ICollection<Apartament> Apartaments { get; set; }
+        public ICollection<Basement> Basements { get; set; }
+        public ICollection<Garage> Garages { get; set; }
+        public ICollection<ParkingSpace> ParkingSpaces { get; set; }
+        public ICollection<Shop> Shops { get; set; }
+        
+
 
     }
 }

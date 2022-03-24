@@ -7,8 +7,12 @@ namespace DreamHomeApp.Entites
 {
     public class Shop
     {
+        
         public int Id { get; set; }
         public int Area { get; set; }
         public string Number { get; set; }
+        public int HouseId { get; set; }
+        public virtual House House { get; set; }
+
     }
 }
