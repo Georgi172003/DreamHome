@@ -12,6 +12,8 @@ namespace DreamHomeApp.Entites
         public string Number { get; set; }
         public int HouseId { get; set; }
         public virtual House House { get; set; }
+        public int StatusId { get; set; }
+        public virtual Status Status { get; set; }
 
     }
 }
