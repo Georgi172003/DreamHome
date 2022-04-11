@@ -7,6 +7,14 @@ namespace DreamHomeApp.Entites
 {
     public class House
     {
+        public House()
+        {
+            this.Apartaments = new HashSet<Apartament>();
+            this.Basements = new HashSet<Basement>();
+            this.Garages = new HashSet<Garage>();
+            this.ParkingSpaces = new HashSet<ParkingSpace>();
+            this.Shops = new HashSet<Shop>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }

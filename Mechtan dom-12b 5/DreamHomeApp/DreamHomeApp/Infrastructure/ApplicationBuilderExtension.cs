@@ -1,4 +1,5 @@
-﻿using DreamHomeApp.Entites;
+﻿using DreamHomeApp.Data;
+using DreamHomeApp.Entites;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,8 @@ namespace DreamHomeApp.Infrastructure
 
             await RoleSeeder(services);
             await SeedAdministrator(services);
+            var data = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedStatuses(data);
 
             return app;
         }
@@ -57,6 +60,23 @@ namespace DreamHomeApp.Infrastructure
                 }
             }
                
+        }
+
+        private static void Seed(ApplicationDbContext data)
+        {
+            if (data.Statuses.Any())
+            {
+                return;
+            }
+            data.Statuses.AddRange(new[]
+            {
+                new Status {Name="Husky"},//
+                new Status {Name="Pinscher"},
+                new Status {Name="Cocer spaniol"},
+                new Status {Name="Dachshund"},
+                new Status {Name="Doberman"},
+            });
+            data.SaveChanges();
         }
     }
 }
