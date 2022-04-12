@@ -62,7 +62,7 @@ namespace DreamHomeApp.Infrastructure
                
         }
 
-        private static void Seed(ApplicationDbContext data)
+        private static void SeedStatuses(ApplicationDbContext data)
         {
             if (data.Statuses.Any())
             {
@@ -70,11 +70,10 @@ namespace DreamHomeApp.Infrastructure
             }
             data.Statuses.AddRange(new[]
             {
-                new Status {Name="Husky"},//
-                new Status {Name="Pinscher"},
-                new Status {Name="Cocer spaniol"},
-                new Status {Name="Dachshund"},
-                new Status {Name="Doberman"},
+                new Status {StatusName="Sold"},
+                new Status {StatusName="Purchased"},
+                new Status {StatusName="Reserved "},
+                
             });
             data.SaveChanges();
         }
