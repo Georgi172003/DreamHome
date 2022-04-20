@@ -49,8 +49,8 @@ namespace DreamHomeApp.Controllers
         // GET: Apartaments/Create
         public IActionResult Create()
         {
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id");
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id");
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name");
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName");
             return View();
         }
 
