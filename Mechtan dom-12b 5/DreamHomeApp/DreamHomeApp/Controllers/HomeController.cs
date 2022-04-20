@@ -30,6 +30,14 @@ namespace DreamHomeApp.Controllers
         {
             return View();
         }
+        public IActionResult Offers()
+        {
+            return View();
+        }
+        public IActionResult News()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
