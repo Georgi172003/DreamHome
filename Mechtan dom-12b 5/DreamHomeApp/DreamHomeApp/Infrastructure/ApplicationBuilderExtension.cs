@@ -53,7 +53,7 @@ namespace DreamHomeApp.Infrastructure
                 user.Email = "admin@admin.com";
 
                 var result = await userManager.CreateAsync
-                    (user, "123!@#qweQWE");
+                    (user, "123456");
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
@@ -71,7 +71,7 @@ namespace DreamHomeApp.Infrastructure
             data.Statuses.AddRange(new[]
             {
                 new Status {StatusName="Sold"},
-                new Status {StatusName="Purchased"},
+                new Status {StatusName="Available"},
                 new Status {StatusName="Reserved "},
                 
             });
