@@ -1,0 +1,55 @@
+﻿@model DreamHomeApp.Entites.House
+
+@{
+    ViewData["Title"] = "DetailsHouse";
+}
+
+<h1>DetailsHouse</h1>
+
+<div>
+    <h4>House</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Town)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Town)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LevelsCount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LevelsCount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.Image)" alt="Image" width="100" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistratedOn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistratedOn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="All" asp-controller="Apartaments" asp-route-houseId="@Model.Id">Apartaments</a> |
+    <a asp-action="All" asp-controller="Garages" asp-route-houseId="@Model.Id">Garages</a> |
+    <a asp-action="All" asp-controller="ParkingSpaces" asp-route-houseId="@Model.Id">ParkingSpaces</a> |
+</div>

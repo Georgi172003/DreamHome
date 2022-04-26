@@ -25,6 +25,11 @@ namespace DreamHomeApp.Controllers
             var applicationDbContext = _context.ParkingSpaces.Include(p => p.House).Include(p => p.Status);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> All(int houseId)
+        {
+            var applicationDbContext = _context.ParkingSpaces.Where(x=>x.HouseId==houseId).Include(p => p.House).Include(p => p.Status);
+            return View(await applicationDbContext.ToListAsync());
+        }
 
         // GET: ParkingSpaces/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -67,8 +72,8 @@ namespace DreamHomeApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", parkingSpace.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", parkingSpace.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", parkingSpace.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", parkingSpace.StatusId);
             return View(parkingSpace);
         }
 
@@ -85,8 +90,8 @@ namespace DreamHomeApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", parkingSpace.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", parkingSpace.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", parkingSpace.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", parkingSpace.StatusId);
             return View(parkingSpace);
         }
 
@@ -122,8 +127,8 @@ namespace DreamHomeApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", parkingSpace.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", parkingSpace.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", parkingSpace.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", parkingSpace.StatusId);
             return View(parkingSpace);
         }
 

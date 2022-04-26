@@ -43,6 +43,23 @@ namespace DreamHomeApp.Controllers
             return View(house);
         }
 
+        public async Task<IActionResult> DetailsHouse(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var house = await _context.Houses
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (house == null)
+            {
+                return NotFound();
+            }
+
+            return View(house);
+        }
+
         // GET: Houses/Create
         public IActionResult Create()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +16,10 @@ namespace DreamHomeApp.Entites
             this.ParkingSpaces = new HashSet<ParkingSpace>();
             this.Shops = new HashSet<Shop>();
         }
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [MaxLength(20)]
         public string StatusName { get; set; }
         public ICollection<Apartament> Apartaments { get; set; }
         public ICollection<Basement> Basements { get; set; }

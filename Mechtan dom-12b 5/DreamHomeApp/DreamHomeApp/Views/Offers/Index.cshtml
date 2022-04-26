@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DreamHomeApp.Entites.House>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    @foreach (var house in Model)
+    {
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <img class="card-img-top" src="@house.Image" alt="@house.Name @house.Adress">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-center">@house.Name @house.Adress </h5>
+                    <a asp-controller="Houses" asp-action="DetailsHouse" asp-route-id="@house.Id" class="btn btn-primary">Виж повече ...</a>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

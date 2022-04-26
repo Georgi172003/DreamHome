@@ -67,8 +67,8 @@ namespace DreamHomeApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", shop.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", shop.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", shop.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", shop.StatusId);
             return View(shop);
         }
 
@@ -85,8 +85,8 @@ namespace DreamHomeApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", shop.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", shop.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", shop.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", shop.StatusId);
             return View(shop);
         }
 
@@ -122,8 +122,8 @@ namespace DreamHomeApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", shop.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", shop.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", shop.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", shop.StatusId);
             return View(shop);
         }
 

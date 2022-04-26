@@ -20,9 +20,14 @@ namespace DreamHomeApp.Controllers
         }
 
         // GET: Apartaments
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Apartaments.Include(a => a.House).Include(a => a.Status);
+            var applicationDbContext = _context.Apartaments.Include(a => a.House).Include(a => a.Status).ToList();
+            return View(applicationDbContext);
+        }
+        public async Task<IActionResult> All(int houseId)
+        {
+            var applicationDbContext = _context.Apartaments.Where(x=>x.HouseId==houseId).Include(a => a.House).Include(a => a.Status);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -59,7 +64,7 @@ namespace DreamHomeApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Number,Area,Description,StatusId,HouseId,Image,Level,CountRooms,CountBath,Closet,Wardrobe,Exhibition")] Apartament apartament)
+        public async Task<IActionResult> Create([Bind("Id,Number,Area,Description,StatusId,HouseId,Image,Level,CountRooms,CountBath,Closet,Wardrobe")] Apartament apartament)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +72,8 @@ namespace DreamHomeApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", apartament.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", apartament.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", apartament.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", apartament.StatusId);
             return View(apartament);
         }
 
@@ -85,8 +90,8 @@ namespace DreamHomeApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", apartament.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", apartament.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", apartament.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", apartament.StatusId);
             return View(apartament);
         }
 
@@ -95,7 +100,7 @@ namespace DreamHomeApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Area,Description,StatusId,HouseId,Image,Level,CountRooms,CountBath,Closet,Wardrobe,Exhibition")] Apartament apartament)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Area,Description,StatusId,HouseId,Image,Level,CountRooms,CountBath,Closet,Wardrobe")] Apartament apartament)
         {
             if (id != apartament.Id)
             {
@@ -122,8 +127,8 @@ namespace DreamHomeApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Id", apartament.HouseId);
-            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "Id", apartament.StatusId);
+            ViewData["HouseId"] = new SelectList(_context.Houses, "Id", "Name", apartament.HouseId);
+            ViewData["StatusId"] = new SelectList(_context.Statuses, "Id", "StatusName", apartament.StatusId);
             return View(apartament);
         }
 

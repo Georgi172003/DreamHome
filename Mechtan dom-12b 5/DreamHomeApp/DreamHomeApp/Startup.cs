@@ -55,7 +55,7 @@ namespace DreamHomeApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.PrepareDatabase();
+            app.PrepareDatabase().Wait();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -33,6 +33,7 @@ namespace DreamHomeApp.Controllers
         public IActionResult Offers()
         {
             return View();
+            
         }
         public IActionResult News()
         {
